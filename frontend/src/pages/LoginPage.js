@@ -27,6 +27,7 @@ class LoginPage extends React.Component{
     onClickLogin = async event => {
         event.preventDefault();
         const { username, password } = this.state;
+        const {onLoginSuccess}=this.props;
         const {push}= this.props.history;
         const creds = {
           username,
@@ -40,7 +41,7 @@ class LoginPage extends React.Component{
         try {
             await login(creds)
             push('/');
-
+            onLoginSuccess(username);
         } catch (apiError) {
             this.setState({
                 error:apiError.response.data.message
