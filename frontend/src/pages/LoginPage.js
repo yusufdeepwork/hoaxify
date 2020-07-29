@@ -5,8 +5,12 @@ import { login } from '../api/apiCalls';
 import axios from 'axios';
 import ButtonWithProgress from '../components/ButtonWithProgress';
 import { withApiProgress } from '../shared/ApiProgress';
-
+import { Authentication } from '../shared/AuthenticationContext';
 class LoginPage extends React.Component{
+
+
+    static contextType=Authentication;
+
 
     state = {
         username : null,
@@ -27,7 +31,7 @@ class LoginPage extends React.Component{
     onClickLogin = async event => {
         event.preventDefault();
         const { username, password } = this.state;
-        const {onLoginSuccess}=this.props;
+        const {onLoginSuccess}=this.context;
         const {push}= this.props.history;
         const creds = {
           username,
@@ -39,9 +43,16 @@ class LoginPage extends React.Component{
         });
 
         try {
-            await login(creds)
+            const response = await login(creds);
+            
             push('/');
-            onLoginSuccess(username);
+            const authState = {
+                ...response.data,
+                password
+              };
+        
+              onLoginSuccess(authState);
+            
         } catch (apiError) {
             this.setState({
                 error:apiError.response.data.message
