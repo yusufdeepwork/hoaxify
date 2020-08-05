@@ -5,11 +5,11 @@ import { login } from '../api/apiCalls';
 import axios from 'axios';
 import ButtonWithProgress from '../components/ButtonWithProgress';
 import { withApiProgress } from '../shared/ApiProgress';
-import { Authentication } from '../shared/AuthenticationContext';
+// import { Authentication } from '../shared/AuthenticationContext';
 class LoginPage extends React.Component{
 
 
-    static contextType=Authentication;
+    // static contextType=Authentication;
 
 
     state = {
@@ -31,7 +31,7 @@ class LoginPage extends React.Component{
     onClickLogin = async event => {
         event.preventDefault();
         const { username, password } = this.state;
-        const {onLoginSuccess}=this.context;
+        const onLoginSuccess= () => {};
         const {push}= this.props.history;
         const creds = {
           username,
