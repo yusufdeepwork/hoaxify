@@ -6,13 +6,39 @@ import App from './container/App';
 import * as serviceWorker from './serviceWorker';
 import './i18n';
 // import AuthenticationContext from './shared/AuthenticationContext';
+import {Provider } from 'react-redux';
+import {createStore} from 'redux';
 
+const loggedInState = {
+  isLoggedIn : true ,
+  username : 'user1',
+  displayName : 'display1',
+  image : null,
+  password : 'P4ssword'
+};
+
+const defaultState = {
+  isLoggedIn: false,
+  username : undefined,
+  displayName:undefined,
+  image : undefined,
+  password : undefined
+};
+
+const reducer = (state = { ...defaultState},action  ) => {
+  if(action.type === 'logout-success'){
+    return defaultState;
+  }
+  return state;
+};
+
+const store = createStore(reducer,loggedInState);
 
 ReactDOM.render(
   <React.StrictMode>
-   {/* <AuthenticationContext> */}
+   <Provider store={store}>
     <App />
-  {/* </AuthenticationContext> */}
+  </Provider>
 
   </React.StrictMode>,
   document.getElementById('root')
