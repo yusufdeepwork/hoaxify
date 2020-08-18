@@ -1,13 +1,13 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import {connect} from 'react-redux';
 // import { Authentication } from '../shared/AuthenticationContext';
 
 
 const ProfileCard = props => {
     const pathUsername = props.match.params.username;
-    const loggedInUsername = props.username;
     let message = 'We cannot edit';
-    if (pathUsername === loggedInUsername) {
+    if (pathUsername === props.loggedInUsername) {
       message = 'We can edit';
     }
     return <div>{message}</div>;
@@ -22,5 +22,11 @@ const ProfileCard = props => {
   //     return <ProfileCard {...this.props} username={this.context.state.username}/>
   //   }
   // }
-  
-  export default withRouter(ProfileCard);
+  const mapStateToProps = store =>{
+    return{
+      loggedInUsername:store.username
+    };
+  };
+ 
+
+  export default connect(mapStateToProps)(withRouter(ProfileCard));

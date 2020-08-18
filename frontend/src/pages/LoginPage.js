@@ -6,6 +6,9 @@ import axios from 'axios';
 import ButtonWithProgress from '../components/ButtonWithProgress';
 import { withApiProgress } from '../shared/ApiProgress';
 // import { Authentication } from '../shared/AuthenticationContext';
+import {connect} from 'react-redux';
+import {loginSuccess} from '../redux/authActions';
+
 class LoginPage extends React.Component{
 
 
@@ -24,14 +27,13 @@ class LoginPage extends React.Component{
         this.setState({
             [name] : value,
             error:null
-        }
+        } 
         );
     }
 
     onClickLogin = async event => {
         event.preventDefault();
         const { username, password } = this.state;
-        const onLoginSuccess= () => {};
         const {push}= this.props.history;
         const creds = {
           username,
@@ -50,8 +52,8 @@ class LoginPage extends React.Component{
                 ...response.data,
                 password
               };
-        
-              onLoginSuccess(authState);
+
+              this.props.onLoginSuccess(authState);
             
         } catch (apiError) {
             this.setState({
@@ -96,5 +98,14 @@ class LoginPage extends React.Component{
 }
 
 
+const mapDispatchToProps = dispatch => {
+    return{
+        onLoginSuccess : authState => dispatch(loginSuccess(authState))
+    }
+}
+
+
+
+
 const LoginPageWithTranslation = withTranslation()(LoginPage);
-export default withApiProgress(LoginPageWithTranslation, '/api/1.0/auth');
+export default connect(null,mapDispatchToProps)(withApiProgress(LoginPageWithTranslation, '/api/1.0/auth'));
