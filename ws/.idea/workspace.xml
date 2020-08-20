@@ -19,12 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="06590cce-0435-4e46-8c66-8042123aa599" name="Default Changelist" comment="generating-users">
+    <list default="true" id="06590cce-0435-4e46-8c66-8042123aa599" name="Default Changelist" comment="get-user-api">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hoaxify/ws/user/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hoaxify/ws/user/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hoaxify/ws/user/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hoaxify/ws/user/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +102,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597922716764</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="get-user-api">
+      <created>1597923980335</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1597923980335</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -122,7 +125,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="generating-users" />
-    <option name="LAST_COMMIT_MESSAGE" value="generating-users" />
+    <MESSAGE value="get-user-api" />
+    <option name="LAST_COMMIT_MESSAGE" value="get-user-api" />
   </component>
   <component name="WindowStateProjectService">
     <state x="652" y="227" width="609" height="627" key="#Auto_Import" timestamp="1594477214104">
@@ -173,10 +177,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="419" y="176" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1594194431185" />
-    <state x="566" y="278" width="804" height="528" key="Vcs.Push.Dialog.v2" timestamp="1597922726132">
+    <state x="566" y="278" width="804" height="528" key="Vcs.Push.Dialog.v2" timestamp="1597923982645">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="566" y="278" width="804" height="528" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1597922726132" />
+    <state x="566" y="278" width="804" height="528" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1597923982645" />
     <state x="622" y="247" key="run.anything.popup" timestamp="1594212270810">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
