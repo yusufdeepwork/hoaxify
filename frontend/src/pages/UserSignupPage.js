@@ -1,10 +1,9 @@
 import React,{useState} from 'react';
-import {changeLanguage} from '../api/apiCalls' 
 import Input from '../components/Input'
-import { withTranslation  } from 'react-i18next';
+import { useTranslation  } from 'react-i18next';
 import ButtonWithProgress from '../components/ButtonWithProgress';
 import { withApiProgress } from '../shared/ApiProgress';
-import {connect} from 'react-redux'
+import {useDispatch} from 'react-redux'
 import { signupHandler } from '../redux/authActions';
 
 const UserSignupPage = (props) => {    
@@ -15,7 +14,8 @@ const UserSignupPage = (props) => {
         passwordRepeat : null
     });
     const [errors, setErrors] = useState({});
-
+    const dispatch = useDispatch();
+    const {t} = useTranslation();
 
    const onChange = event => {
         const {name,value}=event.target;  // object parçalama event targetin içindeki name ve value yi al anlamına geliyor  
@@ -23,12 +23,6 @@ const UserSignupPage = (props) => {
         setErrors((previousErrors) => ({ ...previousErrors,[name]:undefined}));
         setForm((previousForm) => ({...previousForm,[name]: value}))
     };
-
-    const onChangeLanguage = language => {
-        const {i18n} = this.props;
-        i18n.changeLanguage(language);
-        changeLanguage(language);
-    }
 
    const onClickSignup = async (event) =>{
         event.preventDefault();    
@@ -38,8 +32,7 @@ const UserSignupPage = (props) => {
             displayName,
             password
         };
-
-        const {dispatch,history} = props;
+        const {history} = props;
         const {push}= history;
         try {      
             await dispatch(signupHandler(body));
@@ -48,16 +41,17 @@ const UserSignupPage = (props) => {
             if (error.response.data.validationErrors) {
               setErrors(error.response.data.validationErrors);
             };
-                };
-          
+                };          
     };
 
+    //we can dedect errors and control match betweend password and passwordrepeat
     const {username : usernameError,displayName:displayNameError,password:passwordError}=errors;
-    const { t,pendingApiCall } = props;
     let passwordRepeatError;
     if(form.password !== form.passwordRepeat){
         passwordRepeatError=t('Password mismatch');
     };
+    //we can controll spinner according to apiCall.
+    const { pendingApiCall } = props;
     
     return(
         <div className="container">
@@ -75,10 +69,8 @@ const UserSignupPage = (props) => {
         </form>
         </div>
     );
-
 }
 
 const UserSignupPageWithApiProgressForSignupRequest = withApiProgress(UserSignupPage,'/api/1.0/users');
 const UserSignupPageWithApiProgressForAuthRequest = withApiProgress(UserSignupPageWithApiProgressForSignupRequest,'/api/1.0/auth');
-const UserSignupPageWithTranslation = withTranslation()(UserSignupPageWithApiProgressForAuthRequest);
-export default connect()(UserSignupPageWithTranslation);
+export default UserSignupPageWithApiProgressForAuthRequest;
