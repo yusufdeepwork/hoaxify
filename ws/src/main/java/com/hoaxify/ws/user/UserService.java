@@ -5,6 +5,8 @@ package com.hoaxify.ws.user;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class UserService {
@@ -22,5 +24,9 @@ public class UserService {
     public void save(User user) {
         user.setPassword(this.passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
+    }
+
+    public List<User> getUsers() {
+        return userRepository.findAll();
     }
 }
