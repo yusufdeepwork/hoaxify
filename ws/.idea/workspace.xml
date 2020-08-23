@@ -19,13 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="06590cce-0435-4e46-8c66-8042123aa599" name="Default Changelist" comment="page-with-json-view">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hoaxify/ws/user/UserProjection.java" afterDir="false" />
+    <list default="true" id="06590cce-0435-4e46-8c66-8042123aa599" name="Default Changelist" comment="user-vm">
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/UserList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/UserList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hoaxify/ws/configuration/PageSerializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hoaxify/ws/user/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hoaxify/ws/user/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hoaxify/ws/user/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hoaxify/ws/user/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hoaxify/ws/user/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hoaxify/ws/user/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,8 +35,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="AnnotationType" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -121,7 +117,21 @@
       <option name="project" value="LOCAL" />
       <updated>1598172490955</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="user-projection">
+      <created>1598173922370</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1598173922370</updated>
+    </task>
+    <task id="LOCAL-00005" summary="user-vm">
+      <created>1598175799161</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1598175799161</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -140,7 +150,9 @@
     <MESSAGE value="generating-users" />
     <MESSAGE value="get-user-api" />
     <MESSAGE value="page-with-json-view" />
-    <option name="LAST_COMMIT_MESSAGE" value="page-with-json-view" />
+    <MESSAGE value="user-projection" />
+    <MESSAGE value="user-vm" />
+    <option name="LAST_COMMIT_MESSAGE" value="user-vm" />
   </component>
   <component name="WindowStateProjectService">
     <state x="652" y="227" width="609" height="627" key="#Auto_Import" timestamp="1594477214104">
@@ -155,10 +167,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="418" y="199" width="1181" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1593703710589" />
-    <state x="768" y="228" width="679" height="626" key="#com.intellij.ide.util.MemberChooser" timestamp="1598171669222">
+    <state x="768" y="228" width="679" height="626" key="#com.intellij.ide.util.MemberChooser" timestamp="1598174861790">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="768" y="228" width="679" height="626" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1598171669222" />
+    <state x="768" y="228" width="679" height="626" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1598174861790" />
     <state x="113" y="391" width="1681" height="298" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1594224307373">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -191,10 +203,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="419" y="176" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1598167534119" />
-    <state x="566" y="278" width="804" height="528" key="Vcs.Push.Dialog.v2" timestamp="1598172494690">
+    <state x="566" y="278" width="804" height="528" key="Vcs.Push.Dialog.v2" timestamp="1598175802120">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="566" y="278" width="804" height="528" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1598172494690" />
+    <state x="566" y="278" width="804" height="528" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1598175802120" />
     <state x="622" y="247" key="run.anything.popup" timestamp="1594212270810">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
