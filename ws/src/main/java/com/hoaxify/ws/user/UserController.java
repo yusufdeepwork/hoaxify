@@ -1,10 +1,6 @@
 package com.hoaxify.ws.user;
 
-
-
-import com.fasterxml.jackson.annotation.JsonView;
 import com.hoaxify.ws.shared.GenericResponse;
-import com.hoaxify.ws.shared.Views;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +25,7 @@ public class UserController {
         return  new GenericResponse("user created");
     }
     @GetMapping("/api/1.0/users")
-    @JsonView(Views.Base.class)
-    Page<User> getUsers(Pageable page) {
+    Page<UserProjection> getUsers(Pageable page) {
         return userService.getUsers(page);
     }
 
