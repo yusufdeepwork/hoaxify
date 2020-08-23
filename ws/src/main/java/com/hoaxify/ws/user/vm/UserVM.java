@@ -6,6 +6,7 @@ import lombok.Data;
 @Data
 public class UserVM {
 
+    //ı hope so
     private String username;
     private String displayName;
     private String image;
