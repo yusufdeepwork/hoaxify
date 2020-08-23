@@ -20,8 +20,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="06590cce-0435-4e46-8c66-8042123aa599" name="Default Changelist" comment="user-vm">
+      <change afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/api/apiCalls.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/api/apiCalls.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/UserList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/UserList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/i18n.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/i18n.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hoaxify/ws/WsApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hoaxify/ws/WsApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hoaxify/ws/auth/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hoaxify/ws/auth/AuthController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hoaxify/ws/configuration/AuthEntryPoint.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hoaxify/ws/configuration/AuthEntryPoint.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hoaxify/ws/configuration/SecurityConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hoaxify/ws/configuration/SecurityConfiguration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hoaxify/ws/configuration/UserAuthService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hoaxify/ws/configuration/UserAuthService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hoaxify/ws/error/ApiError.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hoaxify/ws/error/ApiError.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hoaxify/ws/error/ErrorHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hoaxify/ws/error/ErrorHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hoaxify/ws/shared/CurrentUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hoaxify/ws/shared/CurrentUser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hoaxify/ws/shared/GenericResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hoaxify/ws/shared/GenericResponse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hoaxify/ws/user/UniqueUsername.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hoaxify/ws/user/UniqueUsername.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hoaxify/ws/user/UniqueUsernameValidation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hoaxify/ws/user/UniqueUsernameValidation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hoaxify/ws/user/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hoaxify/ws/user/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hoaxify/ws/user/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hoaxify/ws/user/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hoaxify/ws/user/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hoaxify/ws/user/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hoaxify/ws/user/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hoaxify/ws/user/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/hoaxify/ws/WsApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/hoaxify/ws/WsApplicationTests.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +75,9 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
@@ -179,30 +203,30 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="98" y="100" width="1724" height="882" key="DiffContextDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1594125182004" />
-    <state width="1848" height="285" key="GridCell.Tab.0.bottom" timestamp="1594654143129">
+    <state width="1870" height="285" key="GridCell.Tab.0.bottom" timestamp="1598191080119">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1848" height="285" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1594654143129" />
-    <state width="1848" height="285" key="GridCell.Tab.0.center" timestamp="1594654143126">
+    <state width="1870" height="285" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1598191080119" />
+    <state width="1870" height="285" key="GridCell.Tab.0.center" timestamp="1598191080118">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1848" height="285" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1594654143126" />
-    <state width="1848" height="285" key="GridCell.Tab.0.left" timestamp="1594654143120">
+    <state width="1870" height="285" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1598191080118" />
+    <state width="1870" height="285" key="GridCell.Tab.0.left" timestamp="1598191080118">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1848" height="285" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1594654143120" />
-    <state width="1848" height="285" key="GridCell.Tab.0.right" timestamp="1594654143127">
+    <state width="1870" height="285" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1598191080118" />
+    <state width="1870" height="285" key="GridCell.Tab.0.right" timestamp="1598191080119">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1848" height="285" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1594654143127" />
+    <state width="1870" height="285" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1598191080119" />
     <state x="315" y="349" width="1284" height="731" key="Registry" timestamp="1594107499218">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="315" y="349" width="1284" height="731" key="Registry/0.0.1920.1080@0.0.1920.1080" timestamp="1594107499218" />
-    <state x="419" y="176" key="SettingsEditor" timestamp="1598167534119">
+    <state x="419" y="176" width="1028" height="845" key="SettingsEditor" timestamp="1598192146774">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="419" y="176" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1598167534119" />
+    <state x="419" y="176" width="1028" height="845" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1598192146774" />
     <state x="566" y="278" width="804" height="528" key="Vcs.Push.Dialog.v2" timestamp="1598175802120">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
