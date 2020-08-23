@@ -20,8 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="06590cce-0435-4e46-8c66-8042123aa599" name="Default Changelist" comment="get-user-api">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hoaxify/ws/configuration/PageSerializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hoaxify/ws/WsApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hoaxify/ws/WsApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hoaxify/ws/user/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hoaxify/ws/user/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hoaxify/ws/user/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hoaxify/ws/user/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -36,8 +38,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="AnnotationType" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -55,7 +57,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -144,10 +146,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="418" y="199" width="1181" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1593703710589" />
-    <state x="768" y="228" width="679" height="626" key="#com.intellij.ide.util.MemberChooser" timestamp="1594480812193">
+    <state x="768" y="228" width="679" height="626" key="#com.intellij.ide.util.MemberChooser" timestamp="1598171669222">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="768" y="228" width="679" height="626" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1594480812193" />
+    <state x="768" y="228" width="679" height="626" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1598171669222" />
     <state x="113" y="391" width="1681" height="298" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1594224307373">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -176,10 +178,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="315" y="349" width="1284" height="731" key="Registry/0.0.1920.1080@0.0.1920.1080" timestamp="1594107499218" />
-    <state x="419" y="176" key="SettingsEditor" timestamp="1594194431185">
+    <state x="419" y="176" key="SettingsEditor" timestamp="1598167534119">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="419" y="176" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1594194431185" />
+    <state x="419" y="176" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1598167534119" />
     <state x="566" y="278" width="804" height="528" key="Vcs.Push.Dialog.v2" timestamp="1597923982645">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -192,5 +194,19 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="622" y="239" width="711" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1594133269255" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/2.2.8.RELEASE/spring-data-commons-2.2.8.RELEASE.jar!/org/springframework/data/domain/Pageable.class</url>
+          <line>23</line>
+          <properties class="org.springframework.data.domain.Pageable" method="getPageNumber">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -12,7 +12,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
-import java.util.List;
+
 
 
 @RestController
@@ -29,10 +29,9 @@ public class UserController {
         return  new GenericResponse("user created");
     }
     @GetMapping("/api/1.0/users")
-    //@JsonView(Views.Base.class)
+    @JsonView(Views.Base.class)
     Page<User> getUsers(Pageable page) {
         return userService.getUsers(page);
-
     }
 
 }
