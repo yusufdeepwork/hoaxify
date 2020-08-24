@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.hoaxify.ws.WsApplicationTests
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 19.885 s - in com.hoaxify.ws.WsApplicationTests
