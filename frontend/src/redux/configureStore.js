@@ -7,7 +7,6 @@ import {setAuthorizationHeader} from '../api/apiCalls';
     const secureLS = new SecureLS();
 
     const getStateFromStorage  = () => {
-       
   const hoaxAuth = secureLS.get('hoax-auth')
    
   let stateInLocalStorage ={
