@@ -1,5 +1,6 @@
 package com.hoaxify.ws.user;
 
+import com.hoaxify.ws.shared.CurrentUser;
 import com.hoaxify.ws.shared.GenericResponse;
 import com.hoaxify.ws.user.vm.UserVM;
 import org.slf4j.Logger;
@@ -26,8 +27,8 @@ public class UserController {
         return  new GenericResponse("user created");
     }
     @GetMapping("/api/1.0/users")
-    Page<UserVM> getUsers(Pageable page) {
-        return userService.getUsers(page).map(UserVM::new);
+    Page<UserVM> getUsers(Pageable page, @CurrentUser User user) {
+        return userService.getUsers(page,user).map(UserVM::new);
     }
 
 }

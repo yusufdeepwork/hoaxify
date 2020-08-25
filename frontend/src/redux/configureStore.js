@@ -2,9 +2,9 @@ import { createStore,applyMiddleware,compose } from 'redux';
 import authReducer from './authReducer';
 import SecureLS from 'secure-ls';
 import thunk from 'redux-thunk'
+import {setAuthorizationHeader} from '../api/apiCalls';
 
     const secureLS = new SecureLS();
-
 
     const getStateFromStorage  = () => {
        
@@ -21,15 +21,19 @@ import thunk from 'redux-thunk'
   if(hoaxAuth){
     return hoaxAuth    
   }
-
   return stateInLocalStorage;
-    }
+ }
 
 
 
     const configureStore = () => {
-        const composeEnhancers =  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-        const store = createStore(authReducer,getStateFromStorage(),composeEnhancers(applyMiddleware(thunk)));
+      const initialState = getStateFromStorage();
+      setAuthorizationHeader(initialState);
+
+
+      
+      const composeEnhancers =  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+      const store = createStore(authReducer,initialState,composeEnhancers(applyMiddleware(thunk)));
 
       const updateStateInStorage = newState => {
             secureLS.set('hoax-auth',newState);
@@ -37,7 +41,8 @@ import thunk from 'redux-thunk'
         
         store.subscribe(() => {
             updateStateInStorage(store.getState());
-        });
+            setAuthorizationHeader(store.getState());
+          });
         return store;
   };
   export default configureStore;
