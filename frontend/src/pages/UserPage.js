@@ -5,7 +5,7 @@ import {getUser} from '../api/apiCalls';
 import {useTranslation} from 'react-i18next';
 const UserPage = () => {
 
-    const [user, setUser] = useState();
+    const [user, setUser] = useState({});
 
     const [notFound, setNotFound] = useState(false);
     const { t } = useTranslation();
@@ -47,7 +47,7 @@ const UserPage = () => {
     }
     return (
         <div className="container">
-            <ProfileCard  />
+            <ProfileCard  user={user}/>
         </div>
     );
 };
