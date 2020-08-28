@@ -34,7 +34,7 @@ const LoginPage = props => {
           setError(apiError.response.data.message);
         }
       };
-            const pendingApiCall = useApiProgress('/api/1.0/auth');
+            const pendingApiCall = useApiProgress('post','/api/1.0/auth');
             const buttonEnabled = username&&password;
         
         return(            

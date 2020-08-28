@@ -12,7 +12,7 @@ const UserPage = () => {
     const [notFound, setNotFound] = useState(false);
     const { t } = useTranslation();
     const {username} = useParams();
-    const pendingApiCall = useApiProgress('/api/1.0/users/' + username);
+    const pendingApiCall = useApiProgress('get','/api/1.0/users/' + username);
 
     useEffect(()=> {
         setNotFound(false)
