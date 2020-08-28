@@ -11,7 +11,7 @@ import {useApiProgress} from '../shared/ApiProgress'
 
 const ProfileCard = props => {
   const {username:loggedInUsername } = useSelector(store => ({username:store.username}));
-  const routeParams = useParams()
+  const routeParams = useParams();
   const pathUsername = routeParams.username;
   const [inEditMode, setInEditMode] = useState(false);
 
@@ -48,11 +48,8 @@ const ProfileCard = props => {
 
   const pendingApiCall = useApiProgress('put','/api/1.0/users/'+username);
 
-  let message = 'We cannot edit';
-  
-  if (pathUsername === loggedInUsername) {
-      message = 'We can edit';
-    }
+
+  const editable = pathUsername === loggedInUsername;
 
     return(
     <div className="card text-center">
@@ -66,10 +63,12 @@ const ProfileCard = props => {
           <h3>
           {displayName}@{username}
           </h3>
-          <button className="btn btn-success d-inline-flex" onClick={()=> setInEditMode(true)}>
+          
+          { editable && (
+            <button className="btn btn-success d-inline-flex" onClick={()=> setInEditMode(true)}>
           <i className="material-icons">edit</i>
           {t('Edit')}
-          </button>
+          </button>)}
           </>
         )}
         {inEditMode && (
