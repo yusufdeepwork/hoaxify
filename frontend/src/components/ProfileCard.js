@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import {useSelector} from 'react-redux';
 import ProfileImageWithDefault from './ProfileImageWithDefault';
@@ -14,8 +14,21 @@ const ProfileCard = props => {
   const {user} = props;
   const {username,displayName,image}=user;
   
+  const [updatedDisplayName, setUpdatedDisplayName] = useState();
   const {t} = useTranslation();
 
+
+  useEffect(()=> {
+    if(!inEditMode){
+      setUpdatedDisplayName(undefined);
+    }else{
+      setUpdatedDisplayName(displayName)
+    }
+  },[inEditMode,displayName]);
+
+  const onClickSave = () => {
+    console.log(updatedDisplayName)
+  };
 
   let message = 'We cannot edit';
   
@@ -43,9 +56,13 @@ const ProfileCard = props => {
         )}
         {inEditMode && (
           <div>
-            <Input label={t('Change Display Name')} />
+            <Input 
+            label={t('Change Display Name')} 
+            defaultValue ={displayName}
+            onChange={event => {setUpdatedDisplayName(event.target.value)}}
+            />
             <div>
-              <button className="btn btn-primary d-inline-flex">
+              <button className="btn btn-primary d-inline-flex" onClick={onClickSave}>
               <i className="material-icons">save</i>
                 {t('Save')}
               </button>
