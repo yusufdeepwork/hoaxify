@@ -14,12 +14,16 @@ const ProfileCard = props => {
   const routeParams = useParams();
   const pathUsername = routeParams.username;
   const [inEditMode, setInEditMode] = useState(false);
-
   const [user, setUser] = useState({});
+  const [editable, setEditable] = useState(false);
 
   useEffect(()=>{
     setUser(props.user)
   },[props.user]);
+
+  useEffect(()=>{
+    setEditable(pathUsername === loggedInUsername)
+  },[pathUsername,loggedInUsername]);
 
   const {username,displayName,image}=user;
   
@@ -49,8 +53,7 @@ const ProfileCard = props => {
   const pendingApiCall = useApiProgress('put','/api/1.0/users/'+username);
 
 
-  const editable = pathUsername === loggedInUsername;
-
+  
     return(
     <div className="card text-center">
       <div className="card-header">
