@@ -20,3 +20,16 @@ spring:
       pageable:
         default-page-size: 10
         max-page-size: 100
+  profiles:
+    active:
+      - dev
+---
+spring:
+  profiles: production
+  hoaxify :
+    upload-path: storage-production
+---
+spring:
+  profiles: dev
+hoaxify:
+  upload-path: storage-dev
