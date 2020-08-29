@@ -43,7 +43,8 @@ const ProfileCard = props => {
 
   const onClickSave = async () => {
     const body = {
-      displayName:updatedDisplayName
+      displayName:updatedDisplayName,
+      image:newImage
     };
     try {
       const response = await updateUser(username,body);
