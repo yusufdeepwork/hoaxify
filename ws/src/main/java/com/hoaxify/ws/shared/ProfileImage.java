@@ -1,18 +1,17 @@
 package com.hoaxify.ws.shared;
 
+        import static java.lang.annotation.ElementType.FIELD;
+        import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
+        import java.lang.annotation.Retention;
+        import java.lang.annotation.Target;
 
-import javax.validation.Constraint;
-import javax.validation.Payload;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.Target;
+        import javax.validation.Constraint;
+        import javax.validation.Payload;
 
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
-
-@Target({ ElementType.FIELD})
+@Target({ FIELD })
 @Retention(RUNTIME)
-@Constraint(validatedBy = {ProfileImageValidator.class})
+@Constraint(validatedBy = { ProfileImageValidator.class })
 public @interface ProfileImage {
 
     String message() default "{hoaxify.constraint.ProfileImage.message}";

@@ -5,7 +5,6 @@ import com.hoaxify.ws.configuration.AppConfiguration;
 import org.apache.tika.Tika;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -22,20 +21,20 @@ import java.util.UUID;
 public class FileService {
 
     AppConfiguration appConfiguration;
-    Tika tika ;
+    Tika tika;
 
-    public FileService(AppConfiguration appConfiguration, Tika tika) {
+    public FileService(AppConfiguration appConfiguration) {
         super();
         this.appConfiguration = appConfiguration;
-        this.tika = tika;
+        this.tika = new Tika();
     }
 
     public String writeBase64EncodedStringToFile(String image) throws IOException{
-        String fileName =  generateRandomName();
-        File target =  new File(appConfiguration.getUploadPath()+"/"+fileName);
+        String fileName = generateRandomName();
+        File target = new File(appConfiguration.getUploadPath() + "/" + fileName);
         OutputStream outputStream = new FileOutputStream(target);
-        byte [] base64Encoded = Base64.getDecoder().decode(image);
-        outputStream.write(base64Encoded);
+        byte [] base64encoded = Base64.getDecoder().decode(image);
+        outputStream.write(base64encoded);
         outputStream.close();
         return fileName;
     }
@@ -56,9 +55,9 @@ public class FileService {
         }
     }
 
-    public String dedectType(String value) {
-        byte [] base64ByteEncoded = Base64.getDecoder().decode(value);
-        return tika.detect(base64ByteEncoded);
+    public String detectType(String value) {
+        byte[] base64encoded = Base64.getDecoder().decode(value);
+        return tika.detect(base64encoded);
     }
 }
 

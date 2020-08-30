@@ -34,6 +34,14 @@ const ProfileCard = props => {
       displayName: undefined
     }));
   }, [updatedDisplayName]);
+
+  useEffect(() => {
+    setValidationErrors(previousValidationErrors => ({
+      ...previousValidationErrors,
+      image: undefined
+    }));
+  }, [newImage]);
+
   const {username,displayName,image}=user;
   
   
@@ -49,17 +57,13 @@ const ProfileCard = props => {
     }
   },[inEditMode,displayName]);
 
-  // useEffect(()=> { 
-  //   setValidationErrors(previousValidationErrors => ({...previousValidationErrors,displayName:undefined}))
-  // },[validationErrors]);
   
 
 
   const onClickSave = async () => {
-  
-    let image ;
-    if(image){
-      image = newImage.split(',')[1]
+    let image;
+    if (newImage) {
+      image = newImage.split(',')[1];
     }
     const body = {
       displayName:updatedDisplayName,
@@ -75,12 +79,12 @@ const ProfileCard = props => {
   };
   
   const onChangeFile = event => {
-    if(event.target.files.length < 1){
+    if (event.target.files.length < 1) {
       return;
     }
     const file = event.target.files[0];
     const fileReader = new FileReader();
-    fileReader.onloadend = () =>{
+    fileReader.onloadend = () => {
       setNewImage(fileReader.result);
     };
     fileReader.readAsDataURL(file);
@@ -88,7 +92,7 @@ const ProfileCard = props => {
 
   const pendingApiCall = useApiProgress('put','/api/1.0/users/'+username);
 
-  const {displayName : displayNameError} = validationErrors;
+  const {displayName : displayNameError, image : imageError} = validationErrors;
   
     return(
     <div className="card text-center">
@@ -125,7 +129,7 @@ const ProfileCard = props => {
             onChange={event => {setUpdatedDisplayName(event.target.value)}}
             error={displayNameError}
             />
-            <input type="file" onChange={onChangeFile} />
+            <Input type="file" onChange={onChangeFile} error={imageError} />
             <div>
               <ButtonWithProgress 
               className="btn btn-primary d-inline-flex" 
