@@ -18,7 +18,8 @@ const ProfileCard = props => {
   const [editable, setEditable] = useState(false);
   const [newImage, setNewImage] = useState();
   const [validationErrors, setValidationErrors] = useState({});
-
+  const [updatedDisplayName, setUpdatedDisplayName] = useState();
+  
   useEffect(()=>{
     setUser(props.user)
   },[props.user]);
@@ -27,9 +28,15 @@ const ProfileCard = props => {
     setEditable(pathUsername === loggedInUsername)
   },[pathUsername,loggedInUsername]);
 
+  useEffect(() => {
+    setValidationErrors(previousValidationErrors => ({
+      ...previousValidationErrors,
+      displayName: undefined
+    }));
+  }, [updatedDisplayName]);
   const {username,displayName,image}=user;
   
-  const [updatedDisplayName, setUpdatedDisplayName] = useState();
+  
   const {t} = useTranslation();
 
 
@@ -42,9 +49,10 @@ const ProfileCard = props => {
     }
   },[inEditMode,displayName]);
 
-  useEffect(()=> { 
-    setValidationErrors(previousValidationErrors => ({...previousValidationErrors,displayName:undefined}))
-  },[validationErrors]);
+  // useEffect(()=> { 
+  //   setValidationErrors(previousValidationErrors => ({...previousValidationErrors,displayName:undefined}))
+  // },[validationErrors]);
+  
 
 
   const onClickSave = async () => {
