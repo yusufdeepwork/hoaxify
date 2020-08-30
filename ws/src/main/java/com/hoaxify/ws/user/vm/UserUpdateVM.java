@@ -1,6 +1,7 @@
 package com.hoaxify.ws.user.vm;
 
 
+import com.hoaxify.ws.shared.ProfileImage;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
@@ -13,5 +14,6 @@ public class UserUpdateVM {
     @NotNull
     private String displayName;
 
+    @ProfileImage
     private String image;
 }
