@@ -11,10 +11,12 @@ package com.hoaxify.ws.shared;
 
 @Target({ FIELD })
 @Retention(RUNTIME)
-@Constraint(validatedBy = { ProfileImageValidator.class })
-public @interface ProfileImage {
+@Constraint(validatedBy = { FileTypeValidator.class })
+public @interface FileType {
 
-    String message() default "{hoaxify.constraint.ProfileImage.message}";
+    String message() default "{hoaxify.constraint.FileType.message}";
     Class<?>[] groups() default { };
     Class<? extends Payload>[] payload() default { };
+
+    String[] types() ;
 }
