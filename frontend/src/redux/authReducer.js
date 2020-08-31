@@ -17,6 +17,12 @@ const defaultState = {
         ...action.payload,
         isLoggedIn : true
       };
+    }else if(action.type === ACTIONS.UPDATE_SUCCESS){
+      return{
+        ...state,
+        //it changes topbar's displayname and topbar's image. 
+        ...action.payload
+      };
     }
     return state;
   };

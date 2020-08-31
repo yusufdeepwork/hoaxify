@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import ProfileImageWithDefault from './ProfileImageWithDefault';
 import { useState } from 'react';
 import {useTranslation} from 'react-i18next';
@@ -8,7 +8,7 @@ import Input from './Input';
 import { updateUser } from '../api/apiCalls';
 import ButtonWithProgress from './ButtonWithProgress';
 import {useApiProgress} from '../shared/ApiProgress'
-
+import { updateSuccess } from '../redux/authActions';
 const ProfileCard = props => {
   const {username:loggedInUsername } = useSelector(store => ({username:store.username}));
   const routeParams = useParams();
@@ -19,7 +19,7 @@ const ProfileCard = props => {
   const [newImage, setNewImage] = useState();
   const [validationErrors, setValidationErrors] = useState({});
   const [updatedDisplayName, setUpdatedDisplayName] = useState();
-  
+  const dispatch = useDispatch();
   useEffect(()=>{
     setUser(props.user)
   },[props.user]);
@@ -73,6 +73,7 @@ const ProfileCard = props => {
       const response = await updateUser(username,body);
       setInEditMode(false);
       setUser(response.data);
+      dispatch(updateSuccess(response.data));
     } catch (error) {
       setValidationErrors(error.response.data.validationErrors);
     }

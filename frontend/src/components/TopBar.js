@@ -18,7 +18,7 @@ const TopBar = props =>   {
 
     const menuArea = useRef(null);
     const [menuVisible,setMenuVisible] = useState(false);
-
+    
     useEffect(() => {
       document.addEventListener('click',menuClickTracker);
       return () => {
