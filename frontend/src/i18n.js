@@ -28,7 +28,8 @@ i18n.use(initReactI18next).init({
                 Cancel : 'Cancel',
                 Edit: 'Edit',
                 'My Profile' : 'My Profile',
-                'There are no hoaxes':'There are no hoaxes'
+                'There are no hoaxes':'There are no hoaxes',
+                'Load old hoaxes':'Load old hoaxes'
             }
 
         },
@@ -54,7 +55,8 @@ i18n.use(initReactI18next).init({
                 Cancel : 'İptal Et',
                 Edit: 'Düzenle',
                 'My Profile' : 'Hesabım',
-                'There are no hoaxes': 'Hoax bulunamadı'
+                'There are no hoaxes': 'Hoax bulunamadı',
+                'Load old hoaxes':'Geçmiş Hoaxları getir'
             }
         }
     },
