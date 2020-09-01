@@ -2,29 +2,33 @@ import React, { useState, useEffect } from 'react';
 import {  getHoaxes } from '../api/apiCalls';
 import {  useTranslation  } from 'react-i18next';
 import HoaxView from './HoaxView';
-import { useApiProgress } from '../shared/ApiProgress';
+import {useApiProgress} from '../shared/ApiProgress';
+
 import Spinner from './Spinner';
 
 const HoaxFeed = () => {
-
+ 
+    
     const [hoaxPage, setHoaxPage] = useState({content:[],last:true,number:0})
     const {t} = useTranslation();
-
-    const pendingApiCall = useApiProgress('get', '/api/1.0/hoaxes');    
+    const pendingApiCall = useApiProgress('get','/api/1.0/hoaxes');
+  
+   
+    
     useEffect(()=> {
         loadHoaxes();
     },[]);
-
+    
     const loadHoaxes = async page => {
-        try {
-            const response =await getHoaxes(page);
-            setHoaxPage(previousHoaxPage=>({
-            ...response.data,
-            content:[...previousHoaxPage.content, ...response.data.content]
-            }));
-        } catch (error) {
-        }
+    try {
+      const response = await getHoaxes(page);
+      setHoaxPage(previousHoaxPage=>({
+        ...response.data,
+        content:[...previousHoaxPage.content, ...response.data.content]
+      }));
+    } catch (error) { 
     }
+  }
    
 
     const {content,last,number} = hoaxPage;

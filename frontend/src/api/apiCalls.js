@@ -38,5 +38,5 @@ export const postHoax = hoax =>{
 }
 
 export const getHoaxes = (page=0) => {
-  return axios.get('api/1.0/hoaxes?page='+page);
+  return axios.get('/api/1.0/hoaxes?page='+page);
 }
