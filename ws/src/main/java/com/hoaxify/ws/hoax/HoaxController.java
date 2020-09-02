@@ -23,7 +23,6 @@ public class HoaxController {
     @PostMapping("/hoaxes")
     GenericResponse saveHoax(@Valid @RequestBody Hoax hoax ,@CurrentUser User user){
         hoaxService.save(hoax,user);
-
         return new GenericResponse("Hoax is saved");
     }
     @GetMapping("/hoaxes")
@@ -33,5 +32,9 @@ public class HoaxController {
     @GetMapping("/users/{username}/hoaxes")
     Page<HoaxVM> getUserHoaxes(@PathVariable String username,@PageableDefault(sort="id",direction = Sort.Direction.DESC) Pageable page){
         return hoaxService.getHoaxesOfUser(username,page).map(HoaxVM::new);
+    }
+    @GetMapping("/hoaxes/{id:[0-9]+}")
+    Page<HoaxVM> getHoaxesRelative (@PageableDefault(sort="id",direction = Sort.Direction.DESC) Pageable page,@PathVariable long id){
+        return hoaxService.getOldHoaxes(id,page).map(HoaxVM::new);
     }
 }

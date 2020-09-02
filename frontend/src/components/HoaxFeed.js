@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {  getHoaxes } from '../api/apiCalls';
+import {  getHoaxes ,getOldHoaxes} from '../api/apiCalls';
 import {  useTranslation  } from 'react-i18next';
 import HoaxView from './HoaxView';
 import {useApiProgress} from '../shared/ApiProgress';
@@ -15,23 +15,33 @@ const HoaxFeed = () => {
     const {username} = useParams();
     const path = username ? `/api/1.0/users/${username}/hoaxes?page=` : '/api/1.0/hoaxes?page=';
     const pendingApiCall = useApiProgress('get', path);
+   
     useEffect(()=> {
-        loadHoaxes();
-    },[]);
+      const loadHoaxes = async page => {
+        try {
+          const response = await getHoaxes(username,page);
+          setHoaxPage(previousHoaxPage=>({
+            ...response.data,
+            content:[...previousHoaxPage.content, ...response.data.content]
+          }));
+        } catch (error) { 
+        }
+      }  
+      loadHoaxes();
+    },[username]);
     
-    const loadHoaxes = async page => {
-    try {
-      const response = await getHoaxes(username,page);
+  
+    const loadOldHoaxes = async () =>{
+      const lastHoaxIndex = hoaxPage.content.length-1;
+      const lastHoaxId = hoaxPage.content[lastHoaxIndex].id;
+      const response = await getOldHoaxes(lastHoaxId);
       setHoaxPage(previousHoaxPage=>({
         ...response.data,
         content:[...previousHoaxPage.content, ...response.data.content]
       }));
-    } catch (error) { 
     }
-  }
-   
 
-    const {content,last,number} = hoaxPage;
+    const {content,last} = hoaxPage;
 
     if(content.length === 0){
         return <div className="alert alert-secondary text-center">{pendingApiCall ? <Spinner/> : t('There are no hoaxes')}</div>;
@@ -45,7 +55,7 @@ const HoaxFeed = () => {
                 {!last && (
                 <div className="alert alert-secondary text-center"
                  style={{cursor: pendingApiCall ? 'not-allowed' :'pointer'}} 
-                onClick={pendingApiCall ? () => {} : () => loadHoaxes(number+1)} 
+                onClick={pendingApiCall ? () => {} : () => loadOldHoaxes()} 
                 >
                {pendingApiCall ? <Spinner/> : t('Load old hoaxes')}
                     </div>
