@@ -14,8 +14,14 @@ const HoaxFeed = () => {
     const {t} = useTranslation();
     const {username} = useParams();
     const path = username ? `/api/1.0/users/${username}/hoaxes?page=` : '/api/1.0/hoaxes?page=';
-    const pendingApiCall = useApiProgress('get', path);
+    const initialHoaxLoadProgress = useApiProgress('get', path);
    
+    let lastHoaxId;
+    if(hoaxPage.content.length > 0){
+      const lastHoaxIndex = hoaxPage.content.length-1;
+       lastHoaxId = hoaxPage.content[lastHoaxIndex].id;
+    }
+    const loadOldHoaxesProgress = useApiProgress('get','/api/1.0/hoaxes/' + lastHoaxId, true)
     useEffect(()=> {
       const loadHoaxes = async page => {
         try {
@@ -32,8 +38,6 @@ const HoaxFeed = () => {
     
   
     const loadOldHoaxes = async () =>{
-      const lastHoaxIndex = hoaxPage.content.length-1;
-      const lastHoaxId = hoaxPage.content[lastHoaxIndex].id;
       const response = await getOldHoaxes(lastHoaxId);
       setHoaxPage(previousHoaxPage=>({
         ...response.data,
@@ -44,7 +48,7 @@ const HoaxFeed = () => {
     const {content,last} = hoaxPage;
 
     if(content.length === 0){
-        return <div className="alert alert-secondary text-center">{pendingApiCall ? <Spinner/> : t('There are no hoaxes')}</div>;
+        return <div className="alert alert-secondary text-center">{initialHoaxLoadProgress ? <Spinner/> : t('There are no hoaxes')}</div>;
     }
 
     return (
@@ -54,10 +58,10 @@ const HoaxFeed = () => {
                 })}
                 {!last && (
                 <div className="alert alert-secondary text-center"
-                 style={{cursor: pendingApiCall ? 'not-allowed' :'pointer'}} 
-                onClick={pendingApiCall ? () => {} : () => loadOldHoaxes()} 
+                 style={{cursor: loadOldHoaxesProgress ? 'not-allowed' :'pointer'}} 
+                onClick={loadOldHoaxesProgress ? () => {} : () => loadOldHoaxes()} 
                 >
-               {pendingApiCall ? <Spinner/> : t('Load old hoaxes')}
+               {loadOldHoaxesProgress ? <Spinner/> : t('Load old hoaxes')}
                     </div>
                 )}
         </div>
