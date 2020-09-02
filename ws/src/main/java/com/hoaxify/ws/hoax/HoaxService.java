@@ -40,12 +40,12 @@ public class HoaxService {
         return hoaxRepository.findByIdLessThan(id,page);
     }
 
-    /*public Page<Hoax> getOldHoaxesOfUser(long id, String username, Pageable page) {
-        User inDB = userService.getByUsername(username);
-        return hoaxRepository.findByIdLessThanAndUser(id,inDB,page);
-    }*/
     public Page<Hoax> getOldHoaxesOfUser(long id, String username, Pageable page) {
         User inDB = userService.getByUsername(username);
         return hoaxRepository.findByIdLessThanAndUser(id, inDB, page);
+    }
+
+    public long getNewHoaxesCount(long id) {
+        return hoaxRepository.countByIdGreaterThan(id);
     }
 }
