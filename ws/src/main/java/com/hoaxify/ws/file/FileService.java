@@ -3,9 +3,8 @@ package com.hoaxify.ws.file;
 
 import com.hoaxify.ws.configuration.AppConfiguration;
 import org.apache.tika.Tika;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -29,28 +28,28 @@ public class FileService {
         this.tika = new Tika();
     }
 
-    public String writeBase64EncodedStringToFile(String image) throws IOException{
+    public String writeBase64EncodedStringToFile(String image) throws IOException {
         String fileName = generateRandomName();
         File target = new File(appConfiguration.getUploadPath() + "/" + fileName);
         OutputStream outputStream = new FileOutputStream(target);
-        byte [] base64encoded = Base64.getDecoder().decode(image);
+        byte[] base64encoded = Base64.getDecoder().decode(image);
         outputStream.write(base64encoded);
         outputStream.close();
         return fileName;
     }
 
     public String generateRandomName() {
-    return UUID.randomUUID().toString().replaceAll("-","");
+        return UUID.randomUUID().toString().replaceAll("-", "");
     }
 
 
     public void deleteFile(String oldImageName) {
-        if(oldImageName == null){
+        if (oldImageName == null) {
             return;
         }
         try {
-            Files.deleteIfExists(Paths.get(appConfiguration.getUploadPath(),oldImageName));
-        }catch (IOException e){
+            Files.deleteIfExists(Paths.get(appConfiguration.getUploadPath(), oldImageName));
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -59,5 +58,17 @@ public class FileService {
         byte[] base64encoded = Base64.getDecoder().decode(value);
         return tika.detect(base64encoded);
     }
-}
 
+    public String saveHoaxAttachment(MultipartFile multipartFile) {
+        String fileName = generateRandomName();
+        File target = new File(appConfiguration.getUploadPath() + "/" + fileName);
+        try {
+            OutputStream outputStream = new FileOutputStream(target);
+            outputStream.write(multipartFile.getBytes());
+            outputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return fileName;
+    }
+}

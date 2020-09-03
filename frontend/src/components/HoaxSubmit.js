@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import ProfileImageWithDefault from './ProfileImageWithDefault';
+import React, { useEffect, useState } from 'react';
+import { useTranslation } from "react-i18next";
 import { useSelector } from 'react-redux';
-import {useTranslation} from "react-i18next";
-import { postHoax } from '../api/apiCalls';
+import { postHoax, postHoaxAttachment } from '../api/apiCalls';
 import { useApiProgress } from '../shared/ApiProgress';
 import ButtonWithProgress from './ButtonWithProgress';
 import Input from './Input';
+import ProfileImageWithDefault from './ProfileImageWithDefault';
 const HoaxSubmit = () => {    
     const {image} = useSelector(store => ({image : store.image}));
     const [focused, setFocused] = useState(false);
@@ -42,6 +42,12 @@ const HoaxSubmit = () => {
         }
     };
 
+    const uploadFile = async file => {
+        const attachment = new FormData();
+        attachment.append('file',file);
+        await postHoaxAttachment(attachment);
+    };
+
     let textAreaClass ='form-control';
     if(errors.content){
         textAreaClass += ' is-invalid';
@@ -54,6 +60,7 @@ const HoaxSubmit = () => {
         const fileReader = new FileReader();
         fileReader.onloadend = () => {
           setNewImage(fileReader.result);
+          uploadFile(file)
         };
         fileReader.readAsDataURL(file);
       }
