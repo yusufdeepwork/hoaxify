@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import {format} from 'timeago.js'
 const HoaxView = props => {
     const {hoax} = props;
-    const {user,content,timestamp} =hoax;
+    const {user,content,timestamp,fileAttachment} =hoax;
     const {username,displayName,image} =user;
 
     const {i18n} = useTranslation()
@@ -26,6 +26,11 @@ const HoaxView = props => {
                 </div>
             </div>
             <div className="pl-5">{content}</div>
+            {fileAttachment && (
+        <div className="pl-5">
+          <img className="img-fluid" src={'images/' + fileAttachment.name} alt={content} />
+        </div>
+      )}
         </div>
     );
     
