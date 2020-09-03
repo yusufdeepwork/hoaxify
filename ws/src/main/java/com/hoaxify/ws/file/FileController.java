@@ -12,6 +12,7 @@ import java.util.Map;
 @RestController
 public class FileController {
 
+
     @Autowired
     FileService fileService;
 
@@ -20,4 +21,5 @@ public class FileController {
     FileAttachment saveHoaxAttachment(MultipartFile file) {
         return fileService.saveHoaxAttachment(file);
     }
+
 }

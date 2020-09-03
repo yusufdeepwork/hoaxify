@@ -24,8 +24,7 @@ public class FileService {
     Tika tika;
     FileAttachmentRepository fileAttachmentRepository;
 
-
-    public FileService(AppConfiguration appConfiguration,FileAttachmentRepository fileAttachmentRepository) {
+    public FileService(AppConfiguration appConfiguration, FileAttachmentRepository fileAttachmentRepository) {
         super();
         this.appConfiguration = appConfiguration;
         this.tika = new Tika();
@@ -70,7 +69,7 @@ public class FileService {
             OutputStream outputStream = new FileOutputStream(target);
             outputStream.write(multipartFile.getBytes());
             outputStream.close();
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         FileAttachment attachment = new FileAttachment();
