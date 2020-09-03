@@ -63,8 +63,6 @@ const HoaxFeed = () => {
     }));
   };
 
-
-
   const loadNewHoaxes = async () => {
     const response = await getNewHoaxes(firstHoaxId, username);
     setHoaxPage(previousHoaxPage => ({

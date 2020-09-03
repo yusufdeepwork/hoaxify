@@ -5,10 +5,12 @@ import {useTranslation} from "react-i18next";
 import { postHoax } from '../api/apiCalls';
 import { useApiProgress } from '../shared/ApiProgress';
 import ButtonWithProgress from './ButtonWithProgress';
+import Input from './Input';
 const HoaxSubmit = () => {    
     const {image} = useSelector(store => ({image : store.image}));
     const [focused, setFocused] = useState(false);
     const [hoax,setHoax] = useState('');
+    const [newImage, setNewImage] = useState();
     const {t}=useTranslation();
     const [errors, setErrors] = useState({});
 
@@ -16,6 +18,7 @@ const HoaxSubmit = () => {
         if(!focused){
             setHoax('');
             setErrors({});
+            setNewImage();
         }
     },[focused]);
 
@@ -43,6 +46,17 @@ const HoaxSubmit = () => {
     if(errors.content){
         textAreaClass += ' is-invalid';
     }
+    const onChangeFile = event => {
+        if (event.target.files.length < 1) {
+          return;
+        }
+        const file = event.target.files[0];
+        const fileReader = new FileReader();
+        fileReader.onloadend = () => {
+          setNewImage(fileReader.result);
+        };
+        fileReader.readAsDataURL(file);
+      }
 
     return (
         <div className="card p-1 flex-row">
@@ -57,6 +71,9 @@ const HoaxSubmit = () => {
                 />
                 <div className="invalid-feedback">{errors.content}</div>
                 {focused && (
+                    <>
+                    <Input type="file" onChange={onChangeFile} />
+                    {newImage &&  <img className="img-thumbnail" src={newImage} alt="hoax-attachment" />}
                 <div className="text-right mt-1">
                <ButtonWithProgress 
                className="btn btn-primary" 
@@ -72,7 +89,8 @@ const HoaxSubmit = () => {
               <i className="material-icons">close</i>
                 {t('Cancel')}
               </button>
-                </div>)}
+                </div>
+                </>)}
             </div>
         </div>
     );
