@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -59,5 +60,10 @@ public class HoaxService {
 
     public List<Hoax> getNewHoaxes(long id, Sort sort) {
         return hoaxRepository.findByIdGreaterThan(id,sort);
+    }
+
+    public List<Hoax> getNewHoaxesOfUser(long id, String username, Sort sort) {
+        User inDB = userService.getByUsername(username);
+        return hoaxRepository.findByIdGreaterThanAndUser(id,inDB,sort);
     }
 }

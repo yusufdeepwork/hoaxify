@@ -24,7 +24,8 @@ const HoaxFeed = () => {
     }
     const oldHoaxPath = username ? `/api/1.0/users/${username}/hoaxes/${lastHoaxId}` : `/api/1.0/hoaxes/${lastHoaxId}`;
     const loadOldHoaxesProgress = useApiProgress('get', oldHoaxPath, true);
-    const loadNewHoaxesProgress = useApiProgress('get',`/api/1.0/hoaxes/${firstHoaxId}?direction=after`);
+    const newHoaxPath = username ? `/api/1.0/users/${username}/hoaxes/${firstHoaxId}?direction=after` : `/api/1.0/hoaxes/${firstHoaxId}?direction=after`; 
+    const loadNewHoaxesProgress = useApiProgress('get',newHoaxPath);
 
 
       useEffect(() => {
@@ -32,7 +33,7 @@ const HoaxFeed = () => {
       const response = await getNewHoaxCount(firstHoaxId,username);
       setNewHoaxCount(response.data.count);
     };
-    let looper = setInterval(getCount, 1000);
+    let looper = setInterval(getCount, 5000);
     return function cleanup() {
       clearInterval(looper);
     };
@@ -62,15 +63,16 @@ const HoaxFeed = () => {
     }));
   };
 
+
+
   const loadNewHoaxes = async () => {
-    const response = await getNewHoaxes(firstHoaxId);
+    const response = await getNewHoaxes(firstHoaxId, username);
     setHoaxPage(previousHoaxPage => ({
       ...previousHoaxPage,
-      content :[response.data,...previousHoaxPage.content]
-    }))
+      content: [...response.data, ...previousHoaxPage.content]
+    }));
     setNewHoaxCount(0);
-  }
-
+  };
 
   const { content, last } = hoaxPage;
 
@@ -83,9 +85,9 @@ const HoaxFeed = () => {
     <div>
       {newHoaxCount > 0 && <div 
       className="alert alert-secondary text-center mb-1"
-      style={{ cursor: loadOldHoaxesProgress ? 'not-allowed' : 'pointer' }}
-      onClick={loadOldHoaxesProgress ? () => {} :loadNewHoaxes}
-      >{t('There are new hoaxes')}</div>}
+      style={{ cursor: loadNewHoaxesProgress ? 'not-allowed' : 'pointer' }}
+      onClick={loadNewHoaxesProgress ? () => {} :loadNewHoaxes}
+      >{loadNewHoaxesProgress ? <Spinner /> : t('There are new hoaxes')}</div>}
       {content.map(hoax => {
         return <HoaxView key={hoax.id} hoax={hoax} />;
       })}
