@@ -12,6 +12,7 @@ const HoaxSubmit = () => {
     const [focused, setFocused] = useState(false);
     const [hoax,setHoax] = useState('');
     const [newImage, setNewImage] = useState();
+    const [attachmentId,setAttachmentId] = useState();
     const {t}=useTranslation();
     const [errors, setErrors] = useState({});
 
@@ -32,7 +33,8 @@ const HoaxSubmit = () => {
 
     const onClickHoaxify = async () => {
         const body ={
-            content : hoax
+            content : hoax,
+            attachmentId : attachmentId
         };
         try {
             await postHoax(body);
@@ -47,7 +49,8 @@ const HoaxSubmit = () => {
     const uploadFile = async file => {
         const attachment = new FormData();
         attachment.append('file',file);
-        await postHoaxAttachment(attachment);
+        const response = await postHoaxAttachment(attachment);
+        setAttachmentId(response.data.id);
     };
 
     let textAreaClass ='form-control';
