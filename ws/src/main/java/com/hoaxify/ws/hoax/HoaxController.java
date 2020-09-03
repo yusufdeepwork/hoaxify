@@ -1,5 +1,6 @@
 package com.hoaxify.ws.hoax;
 
+import com.hoaxify.ws.hoax.vm.HoaxSubmitVM;
 import com.hoaxify.ws.hoax.vm.HoaxVM;
 import com.hoaxify.ws.shared.CurrentUser;
 import com.hoaxify.ws.shared.GenericResponse;
@@ -16,7 +17,7 @@ import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collector;
+
 import java.util.stream.Collectors;
 
 @RestController
@@ -27,7 +28,7 @@ public class HoaxController {
     HoaxService hoaxService;
 
     @PostMapping("/hoaxes")
-    GenericResponse saveHoax(@Valid @RequestBody Hoax hoax ,@CurrentUser User user){
+    GenericResponse saveHoax(@Valid @RequestBody HoaxSubmitVM hoax , @CurrentUser User user){
         hoaxService.save(hoax,user);
         return new GenericResponse("Hoax is saved");
     }
