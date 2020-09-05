@@ -5,7 +5,6 @@ import com.hoaxify.ws.user.User;
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Data
@@ -25,7 +24,7 @@ public class Hoax {
     @ManyToOne
     private User user;
 
-    @OneToOne(mappedBy = "hoax")
+    @OneToOne(mappedBy = "hoax",cascade = CascadeType.REMOVE)
     private FileAttachment fileAttachment;
 
 }
