@@ -35,6 +35,7 @@ public class HoaxService {
 
     public void save(HoaxSubmitVM hoaxSubmitVM, User user) {
         Hoax hoax = new Hoax();
+        hoax.setContent(hoaxSubmitVM.getContent());
         hoax.setTimestamp(new Date());
         hoax.setUser(user);
         hoaxRepository.save(hoax);
@@ -45,6 +46,7 @@ public class HoaxService {
             fileAttachmentRepository.save(fileAttachment);
         }
     }
+
 
     public Page<Hoax> getHoaxes(Pageable page) {
         return hoaxRepository.findAll(page);

@@ -13,8 +13,7 @@ public class Hoax {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
-
+    
     @Column(length = 1000)
     private String content;
 

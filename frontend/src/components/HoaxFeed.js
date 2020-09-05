@@ -45,12 +45,15 @@ const HoaxFeed = () => {
     const loadHoaxes = async page => {
       try {
         const response = await getHoaxes(username, page);
+
         setHoaxPage(previousHoaxPage => ({
           ...response.data,
           content: [...previousHoaxPage.content, ...response.data.content]
         }));
+
       } catch (error) {}
     };
+    
     loadHoaxes();
   }, [username]);
     
@@ -69,6 +72,7 @@ const HoaxFeed = () => {
       ...previousHoaxPage,
       content: [...response.data, ...previousHoaxPage.content]
     }));
+    console.log(response.data)
     setNewHoaxCount(0);
   };
 
