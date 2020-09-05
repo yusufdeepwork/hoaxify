@@ -4,14 +4,19 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import {format} from 'timeago.js'
 import { useSelector } from 'react-redux';
+import { deleteHoax } from '../api/apiCalls';
 const HoaxView = props => {
     const loggedInUser = useSelector(store => store.username);
-    const {hoax} = props;
-    const {user,content,timestamp,fileAttachment} =hoax;
+    const {hoax, onDeleteHoax} = props;
+    const {user,content,timestamp,fileAttachment,id} =hoax;
     const {username,displayName,image} =user;
 
 
-    const {i18n} = useTranslation()
+    const {i18n} = useTranslation();
+    const onClickDelete = async () =>{
+        await deleteHoax(id);
+        onDeleteHoax(id);
+    }
     const formatted = format(timestamp,i18n.language);
     const ownedByLoggedInUser = loggedInUser === username;
 
@@ -29,7 +34,7 @@ const HoaxView = props => {
                     </Link>
                 </div>
                 {ownedByLoggedInUser && (
-                    <button className="btn btn-delete-link btn-sm">
+                    <button className="btn btn-delete-link btn-sm" onClick={onClickDelete}>
                         <i className="material-icons">delete_outline</i>
                     </button>
                 )}

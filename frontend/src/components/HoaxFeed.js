@@ -74,6 +74,12 @@ const HoaxFeed = () => {
 
   const { content, last } = hoaxPage;
 
+  const onDeleteHoaxSuccess = id => {
+    setHoaxPage(previousHoaxPage => ({
+      ...previousHoaxPage,
+      content : previousHoaxPage.content.filter(hoax => hoax.id !== id)
+    }));
+  };
 
   if (content.length === 0) {
     return <div className="alert alert-secondary text-center">{initialHoaxLoadProgress ? <Spinner /> : t('There are no hoaxes')}</div>;
@@ -87,7 +93,7 @@ const HoaxFeed = () => {
       onClick={loadNewHoaxesProgress ? () => {} :loadNewHoaxes}
       >{loadNewHoaxesProgress ? <Spinner /> : t('There are new hoaxes')}</div>}
       {content.map(hoax => {
-        return <HoaxView key={hoax.id} hoax={hoax} />;
+        return <HoaxView key={hoax.id} hoax={hoax} onDeleteHoax={onDeleteHoaxSuccess}/>;
       })}
       {!last && (
         <div
