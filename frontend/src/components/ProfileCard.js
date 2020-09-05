@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 import ProfileImageWithDefault from './ProfileImageWithDefault';
 import { useState } from 'react';
@@ -8,7 +8,7 @@ import Input from './Input';
 import { updateUser, deleteUser } from '../api/apiCalls';
 import ButtonWithProgress from './ButtonWithProgress';
 import {useApiProgress} from '../shared/ApiProgress'
-import { updateSuccess } from '../redux/authActions';
+import { updateSuccess,logoutSuccess } from '../redux/authActions';
 import Modal from './Modal';
 const ProfileCard = props => {
   const {username:loggedInUsername } = useSelector(store => ({username:store.username}));
@@ -22,6 +22,8 @@ const ProfileCard = props => {
   const [modalVisible, setModalVisible] = useState(false);
   const [updatedDisplayName, setUpdatedDisplayName] = useState();
   const dispatch = useDispatch();
+  const history  = useHistory();
+
   useEffect(()=>{
     setUser(props.user)
   },[props.user]);
@@ -45,10 +47,8 @@ const ProfileCard = props => {
   }, [newImage]);
 
   const {username,displayName,image}=user;
-  
   const pendingApiCallDeleteUser = useApiProgress('delete', `/api/1.0/users/${username}`, true);
   const {t} = useTranslation();
-
 
   useEffect(()=> {
     if(!inEditMode){
@@ -58,9 +58,6 @@ const ProfileCard = props => {
       setUpdatedDisplayName(displayName)
     }
   },[inEditMode,displayName]);
-
-  
-
 
   const onClickSave = async () => {
     let image;
@@ -100,6 +97,8 @@ const ProfileCard = props => {
   const onClickDeleteUser = async () => {
     await deleteUser(username);
     setModalVisible(false);
+    dispatch(logoutSuccess());
+    history.push('/');
   }
 
   
